@@ -1,0 +1,17 @@
+:root {
+  --base-colorwhite: rgba(255, 255, 255, 1);
+  --blueblue-500: rgba(49, 130, 206, 1);
+  --bold-large-font-family: "Helvetica", Helvetica;
+  --bold-large-font-size: 18px;
+  --bold-large-font-style: normal;
+  --bold-large-font-weight: 700;
+  --bold-large-letter-spacing: 0px;
+  --bold-large-line-height: 150%;
+  --bold-medium-font-family: "Helvetica", Helvetica;
+  --bold-medium-font-size: 16px;
+  --bold-medium-font-style: normal;
+  --bold-medium-font-weight: 700;
+  --bold-medium-letter-spacing: 0px;
+  --bold-medium-line-height: 150%;
+  --coloretalighter-65: rgba(206, 206, 206, 1);
+}

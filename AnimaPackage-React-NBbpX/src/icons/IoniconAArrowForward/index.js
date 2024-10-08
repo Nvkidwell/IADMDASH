@@ -1,0 +1,1 @@
+export { IoniconAArrowForward } from "./IoniconAArrowForward";

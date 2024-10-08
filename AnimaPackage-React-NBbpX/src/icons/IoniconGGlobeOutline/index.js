@@ -1,0 +1,1 @@
+export { IoniconGGlobeOutline } from "./IoniconGGlobeOutline";

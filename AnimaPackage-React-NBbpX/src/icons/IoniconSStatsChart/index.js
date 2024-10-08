@@ -1,0 +1,1 @@
+export { IoniconSStatsChart } from "./IoniconSStatsChart";

@@ -1,0 +1,1 @@
+export { IoniconWWalletDefault } from "./IoniconWWalletDefault";
