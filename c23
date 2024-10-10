@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+      .node {
+        stroke: #fff;
+        stroke-width: 1.5px;
+        cursor: pointer; /* Change cursor when hovering over a node */
+      }
+    </style>
+  </head>
+  <body>
+    <svg width="600" height="600"></svg>
+    <script>
+      // SVG dimensions
+      const width = 600;
+      const height = 600;
+
+      // Example dataset
+      const nodes = d3.range(100).map(function(d) {
+        return { radius: Math.random() * 25 + 5 };
+      });
+
+      // Create SVG
+      const svg = d3.select("svg");
+
+      // Create the simulation with forces
+      const simulation = d3.forceSimulation(nodes)
+        .force("charge", d3.forceManyBody().strength(5))
+        .force("center", d3.forceCenter(width / 2, height / 2))
+        .force("collide", d3.forceCollide().radius(d => d.radius + 2).iterations(1))
+        .on("tick", ticked);
+
+      // Create circles (nodes) in the SVG
+      const circle = svg.selectAll("circle")
+        .data(nodes)
+        .enter().append("circle")
+        .attr("r", d => d.radius)
+        .attr("fill", "steelblue")
+        .attr("class", "node")
+        .call(d3.drag()  // Enable dragging
+          .on("start", dragstarted)
+          .on("drag", dragged)
+          .on("end", dragended));
+
+      // Update the positions of nodes on every tick
+      function ticked() {
+        circle
+          .attr("cx", d => d.x)
+          .attr("cy", d => d.y);
+      }
+
+      // Drag event handlers
+      function dragstarted(event, d) {
+        if (!event.active) simulation.alphaTarget(0.3).restart(); // Restart simulation on drag
+        d.fx = d.x;  // Fix x-position of the dragged node
+        d.fy = d.y;  // Fix y-position of the dragged node
+      }
+
+      function dragged(event, d) {
+        d.fx = event.x;  // Update fixed x-position as the node is dragged
+        d.fy = event.y;  // Update fixed y-position as the node is dragged
+      }
+
+      function dragended(event, d) {
+        if (!event.active) simulation.alphaTarget(0);  // Cool down the simulation after dragging
+        d.fx = null;  // Release fixed x-position
+        d.fy = null;  // Release fixed y-position
+      }
+    </script>
+  </body>
+</html>
