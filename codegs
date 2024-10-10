@@ -1,0 +1,55 @@
+function doGet() {
+  return HtmlService.createTemplateFromFile('index')
+      .evaluate()
+      .setTitle('Dashboard')
+      .setFaviconUrl(FAVICON_URL);
+}
+
+// Include HTML files
+function include(filename) {
+  return HtmlService.createHtmlOutputFromFile(filename).getContent();
+}
+
+// Constants (Replace with your actual IDs)
+const LOGO_FILE_ID = 'YOUR_LOGO_FILE_ID';
+const FAVICON_URL = 'YOUR_FAVICON_URL';
+
+// Get dashboard data
+function getDashboardData() {
+  // Simulate fetching data - replace with actual data source
+  return {
+    todaySubmissions: Math.floor(Math.random() * 1000),
+    totalUsers: Math.floor(Math.random() * 50000),
+    activeSurveys: Math.floor(Math.random() * 100),
+    metrics: {
+      users: Math.floor(Math.random() * 100000),
+      clicks: Math.floor(Math.random() * 1000000),
+      rpi: Math.floor(Math.random() * 1000),
+      placeholder: Math.floor(Math.random() * 500)
+    },
+    activityData: generateRandomTimeData(10),
+    submissionsData: generateRandomTimeData(12)
+  };
+}
+
+function generateRandomTimeData(points) {
+  const data = [];
+  for (let i = 0; i < points; i++) {
+    data.push({
+      label: `Day ${i + 1}`,
+      value: Math.floor(Math.random() * 100)
+    });
+  }
+  return data;
+}
+
+// Get logo URL
+function getLogoUrl() {
+  try {
+    const file = DriveApp.getFileById(LOGO_FILE_ID);
+    return file.getDownloadUrl();
+  } catch (e) {
+    console.error('Error getting logo:', e);
+    return '';
+  }
+}
