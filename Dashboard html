@@ -3,64 +3,108 @@
   <head>
     <base target="_top">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
     <?!= include('styles'); ?>
   </head>
-  <body class="bg-gray-100">
-    <div class="container mx-auto p-4">
+  <body class="bg-slate-50 dark:bg-slate-900 min-h-screen">
+    <div class="container mx-auto p-6">
       <!-- Header -->
       <div class="flex justify-between items-center mb-8">
-        <div class="w-24">
+        <div class="w-32">
           <img id="logoImg" src="" alt="Company Logo" class="w-full">
         </div>
-        <div class="flex gap-4">
-          <div class="stats-card">
-            <h3>Today's Submissions</h3>
-            <p id="todaySubmissions">0</p>
+        <div class="flex items-center gap-4">
+          <div id="themeToggle" class="cursor-pointer">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"></svg>
           </div>
-          <div class="stats-card">
-            <h3>Total Users</h3>
-            <p id="totalUsers">0</p>
-          </div>
-          <div class="stats-card">
-            <h3>Active Surveys</h3>
-            <p id="activeSurveys">0</p>
+          <div class="relative">
+            <button id="refreshData" class="btn-primary">
+              Refresh Data
+              <span class="animate-spin hidden ml-2">⟳</span>
+            </button>
           </div>
         </div>
       </div>
 
-      <!-- Main Content -->
-      <div class="grid grid-cols-2 gap-6">
-        <div class="bg-white rounded-lg p-6 shadow">
-          <h2 class="text-xl font-bold mb-4">Activity Overview</h2>
-          <canvas id="activityChart"></canvas>
+      <!-- Top Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div class="stat-card" data-metric="submissions">
+          <div class="stat-icon bg-blue-100 dark:bg-blue-900">
+            <svg class="w-6 h-6 text-blue-600"></svg>
+          </div>
+          <div class="stat-content">
+            <h3>Total Submissions</h3>
+            <p class="counter" data-target="1234">0</p>
+            <span class="trend up">+12.5%</span>
+          </div>
         </div>
-        <div class="bg-white rounded-lg p-6 shadow">
-          <h2 class="text-xl font-bold mb-4">Submissions Trend</h2>
-          <canvas id="submissionsChart"></canvas>
+        <!-- Repeat for other stat cards -->
+      </div>
+
+      <!-- Main Cards -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+        <div class="card">
+          <div class="card-header">
+            <h2>Activity Overview</h2>
+            <div class="card-actions">
+              <select class="select-time">
+                <option>Last 7 days</option>
+                <option>Last 30 days</option>
+                <option>Last 90 days</option>
+              </select>
+            </div>
+          </div>
+          <div class="card-body">
+            <canvas id="activityChart"></canvas>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <h2>Performance Metrics</h2>
+            <div class="card-actions">
+              <button class="btn-chart active" data-chart="bar">Bar</button>
+              <button class="btn-chart" data-chart="line">Line</button>
+            </div>
+          </div>
+          <div class="card-body">
+            <canvas id="performanceChart"></canvas>
+          </div>
         </div>
       </div>
 
-      <!-- Metrics Section -->
-      <div class="grid grid-cols-4 gap-4 mt-6">
-        <div class="metric-card">
-          <h3>Users</h3>
-          <p id="userCount">0</p>
+      <!-- Data Table -->
+      <div class="card">
+        <div class="card-header">
+          <h2>Detailed Analytics</h2>
+          <div class="card-actions">
+            <input type="text" id="tableSearch" placeholder="Search..." class="search-input">
+            <button class="btn-export">Export CSV</button>
+          </div>
         </div>
-        <div class="metric-card">
-          <h3>Clicks</h3>
-          <p id="clickCount">0</p>
-        </div>
-        <div class="metric-card">
-          <h3>RPI</h3>
-          <p id="rpiCount">0</p>
-        </div>
-        <div class="metric-card">
-          <h3>Placeholder</h3>
-          <p id="placeholderCount">0</p>
+        <div class="card-body overflow-x-auto">
+          <table id="dataTable" class="min-w-full">
+            <thead>
+              <tr>
+                <th class="sortable" data-sort="id">ID</th>
+                <th class="sortable" data-sort="date">Date</th>
+                <th class="sortable" data-sort="user">User</th>
+                <th class="sortable" data-sort="type">Type</th>
+                <th class="sortable" data-sort="status">Status</th>
+                <th class="sortable" data-sort="progress">Progress</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="tableBody">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+          <div id="tablePagination" class="pagination">
+            <!-- Pagination controls -->
+          </div>
         </div>
       </div>
     </div>
-    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chart.js/3.7.0/chart.min.js"></script>
     <?!= include('javascript'); ?>
   </body>
