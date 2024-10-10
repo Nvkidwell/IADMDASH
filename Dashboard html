@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <?!= include('styles'); ?>
+  </head>
+  <body class="bg-gray-100">
+    <div class="container mx-auto p-4">
+      <!-- Header -->
+      <div class="flex justify-between items-center mb-8">
+        <div class="w-24">
+          <img id="logoImg" src="" alt="Company Logo" class="w-full">
+        </div>
+        <div class="flex gap-4">
+          <div class="stats-card">
+            <h3>Today's Submissions</h3>
+            <p id="todaySubmissions">0</p>
+          </div>
+          <div class="stats-card">
+            <h3>Total Users</h3>
+            <p id="totalUsers">0</p>
+          </div>
+          <div class="stats-card">
+            <h3>Active Surveys</h3>
+            <p id="activeSurveys">0</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="grid grid-cols-2 gap-6">
+        <div class="bg-white rounded-lg p-6 shadow">
+          <h2 class="text-xl font-bold mb-4">Activity Overview</h2>
+          <canvas id="activityChart"></canvas>
+        </div>
+        <div class="bg-white rounded-lg p-6 shadow">
+          <h2 class="text-xl font-bold mb-4">Submissions Trend</h2>
+          <canvas id="submissionsChart"></canvas>
+        </div>
+      </div>
+
+      <!-- Metrics Section -->
+      <div class="grid grid-cols-4 gap-4 mt-6">
+        <div class="metric-card">
+          <h3>Users</h3>
+          <p id="userCount">0</p>
+        </div>
+        <div class="metric-card">
+          <h3>Clicks</h3>
+          <p id="clickCount">0</p>
+        </div>
+        <div class="metric-card">
+          <h3>RPI</h3>
+          <p id="rpiCount">0</p>
+        </div>
+        <div class="metric-card">
+          <h3>Placeholder</h3>
+          <p id="placeholderCount">0</p>
+        </div>
+      </div>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chart.js/3.7.0/chart.min.js"></script>
+    <?!= include('javascript'); ?>
+  </body>
+</html>
