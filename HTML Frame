@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Screen</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        .container {
+            display: flex;
+            flex-direction: row;
+            height: 100vh;
+            padding: 20px;
+        }
+        .sidebar {
+            width: 250px;
+            background-color: #ffffff;
+            box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        .sidebar img {
+            max-width: 100%;
+            height: auto;
+        }
+        .content {
+            flex: 1;
+            padding: 20px;
+        }
+        .header, .stats, .chart {
+            background-color: #ffffff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header img {
+            width: 100px;
+        }
+        .stats {
+            display: flex;
+            justify-content: space-between;
+        }
+        .stats div {
+            text-align: center;
+        }
+        .chart img {
+            width: 100%;
+            height: auto;
+        }
+        .help-box {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            width: 220px;
+            padding: 15px;
+            background-color: #e3e9f1;
+            border-radius: 8px;
+        }
+        .help-box img {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <!-- GSA Logo Placeholder -->
+            <img src="placeholder-gsa-logo.png" alt="GSA Logo Placeholder">
+            <ul>
+                <li>Dashboard</li>
+                <li>Tables</li>
+                <li>Submissions</li>
+                <li>Placeholder</li>
+            </ul>
+
+            <!-- Help Box Placeholder -->
+            <div class="help-box">
+                <img src="placeholder-help.png" alt="Help Box Placeholder">
+                <p>Need Help? Please check our docs</p>
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div class="content">
+            <!-- Header Section -->
+            <div class="header">
+                <h2>Intuitive Acquisition Decision Model (iADM)</h2>
+                <img src="placeholder-iADM-logo.png" alt="iADM Logo Placeholder">
+            </div>
+
+            <!-- Stats Section -->
+            <div class="stats">
+                <div>
+                    <p>Today's Submissions</p>
+                    <h3>124</h3>
+                </div>
+                <div>
+                    <p>SIN Scores</p>
+                    <h3>2,300</h3>
+                </div>
+                <div>
+                    <p>BPA</p>
+                    <h3>3,052</h3>
+                </div>
+                <div>
+                    <p>Placeholder</p>
+                    <h3>0</h3>
+                </div>
+            </div>
+
+            <!-- Chart Section -->
+            <div class="chart">
+                <!-- Active Surveys Chart Placeholder -->
+                <img src="placeholder-chart.png" alt="Active Surveys Chart Placeholder">
+            </div>
+
+            <!-- Submissions Graph Placeholder -->
+            <div class="chart">
+                <img src="placeholder-submissions.png" alt="Submissions Chart Placeholder">
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
