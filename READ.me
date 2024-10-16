@@ -1,0 +1,37 @@
+# Sunburst Chart with Google Drive JSON Data
+
+This project fetches JSON data from a Google Drive file and displays it as a sunburst chart using D3.js. The sunburst chart visualizes hierarchical data, making it easier to analyze relationships and distributions.
+
+## Table of Contents
+- [Features](#features)
+- [Getting Started](#getting-started)
+- [Usage](#usage)
+- [Dependencies](#dependencies)
+- [License](#license)
+
+## Features
+- Fetches JSON data from Google Drive.
+- Visualizes data in a sunburst chart using D3.js.
+- Interactive chart with clickable segments to explore hierarchical data.
+
+## Getting Started
+
+### Prerequisites
+To run this project, ensure you have the following:
+- A modern web browser (e.g., Chrome, Firefox, Safari).
+- Access to the internet for fetching D3.js library and Google Drive JSON file.
+
+### Setting Up Your Google Drive JSON File
+
+1. **Upload Your JSON File**: Upload the JSON file you want to visualize to your Google Drive.
+2. **Set Permissions**:
+   - Right-click on the JSON file and select **"Share."**
+   - Set the sharing option to **"Anyone with the link"** and ensure the access level is set to **"Viewer."**
+3. **Get the Shareable Link**:
+   - Copy the link that looks like this:  
+     `https://drive.google.com/file/d/FILE_ID/view?usp=sharing`
+   - Extract the `FILE_ID` from the link.
+
+4. **Construct the Fetch URL**: Use the following format to create the URL:
+   ```plaintext
+   https://drive.google.com/uc?export=download&id=FILE_ID
